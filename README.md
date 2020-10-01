@@ -1,6 +1,7 @@
 *Ceci est un guide C++, qui permet de voir toutes les nouvelles fonctionnalités possibles par rapport au langage C, et ce jusqu'à la norme C++20 (2020), si possible.*
 
-*Dérnière mise à jour, le 29/09/20.*
+*Date de création, en 2020.*
+*Dérnière mise à jour, le 01/10/20.*
 
 ---
 Sommaire :
@@ -10,7 +11,7 @@ Sommaire :
     1. [La compilation](#la-compilation)
     1. [Les commentaires](#les-commentaires)
     1. [Les *libraries*](#les-libraries)
-    1. [L'affichage](#l'affichage)
+    1. [L'affichage](#l%27affichage)
         - [Les caractères](#les-caractères)
             - [L'affichage des char](#l'affichage-des-char)
             - [L'affichage des wchar](#l'affichage-des-wchar)
@@ -33,6 +34,8 @@ Sommaire :
         - [Les casts](#les-casts)
         - [La library <limits>](#la-library-<limits>)
     1. [Saisie utilisateur](#saisie-utilisateur)
+        - [Les méthodes de cin](#les-méthodes-de-cin)
+        - [Les états de cin](#les-états-de-cin)
 ---
 
 # C++
@@ -88,14 +91,15 @@ L' affichage se fait par le biais du **flux de sortie** à l'aide d'une classe s
 ```c++
 std::cout << "Mon Affichage" << std::endl
 ```
+
  * `cout`
- 	***'c'*** pour caractère/char. ***'out'*** pour sortie. `std::cout` indique donc qu'il affiche un message sur l'écran.
+    ***'c'*** pour caractère/char. ***'out'*** pour sortie. `std::cout` indique donc qu'il affiche un message sur l'écran.
 
  * `<<`
     Dans cette exemple, il s'agit d'un opérateur de **flux** et plus prècisement d'un **opérateur d'insertion**.
     
  * `std::endl`
- 	***'endl'*** pour fin de ligne ou *"endline"*. Retourne à la ligne et **vide la mémoire tampon (flush).**
+    ***'endl'*** pour fin de ligne ou *"endline"*. Retourne à la ligne et **vide la mémoire tampon (flush).**
 
 L'utilisation de plusieurs `std::cout` n'utilise qu'un seul objet *cout*. Le *cout* est donc toujours le même, cela ne créera pas deux *cout* différents !
 
@@ -106,15 +110,15 @@ L'utilisation de plusieurs `std::cout` n'utilise qu'un seul objet *cout*. Le *co
 Les autres flux de sortie pour les caractères sont :
 
  * `cerr`
- 	Représente la **sortie standard d'erreur**.
+    Représente la **sortie standard d'erreur**.
 
  * `clog`
- 	Pour *"character logging"*. Représente la **sortie standard des log** **(informations contenues dans un fichier externe pour l'analyse des erreurs d'un programme)**.
+    Pour *"character logging"*. Représente la **sortie standard des log** **(informations contenues dans un fichier externe pour l'analyse des erreurs d'un programme)**.
 
 #### L'affichage des `wchar` :
 
 Pour gérer les caractères spéciaux (`wchar`), des flux de sortie spécifiques existent :
-	
+    
  * `wcout`
 
  * `wcerr`
@@ -130,75 +134,75 @@ Pour gérer les caractères spéciaux (`wchar`), des flux de sortie spécifiques
 Il est possible de modifier sur le flux de sortie standard (`cout`) le format d'affichage des nombres qui seront affichés par la suite. Les formats d'affichage sont les suivants :
 
  * `std::hex`
- 	Format hexadécimal.
+    Format hexadécimal.
 
  * `std::oct`
- 	Format octal.
+    Format octal.
 
  * `std::dec`
- 	Format décimal.
+    Format décimal.
 
  * `std::defaultfloat`
- 	Format flottant.
+    Format flottant.
 
  * `std::scientific`
- 	Format scientifique.
+    Format scientifique.
 
  * `std::fixed`
- 	Format fixe.
+    Format fixe.
 
 #### L'affichage d'un booléen :
 
 Il est possible d'afficher/masquer la valeur d'un type booléen :
 
  * `std::boolalpha`
- 	Affiche le type booléen.
+    Affiche le type booléen.
 
  * `std::noboolalpha`
- 	Masque le type booléen.
+    Masque le type booléen.
 
 #### L'affiche après la virgule d'un nombre décimal :
 
 Il est possible d'afficher/masquer les valeurs après la virgule d'un nombre de type décimal :
 
  * `std::showpoint`
- 	Affiche les valeurs après la virgule.
+    Affiche les valeurs après la virgule.
 
  * `std::noshowpoint`
- 	Masque les valeurs après la virgule.
+    Masque les valeurs après la virgule.
 
 #### L'affichage du signe d'un nombre :
 
 Il est possible d'afficher/masquer le signe d'un nombre arithmétique :
 
  * `std::showpos`
- 	Affiche le signe.
+    Affiche le signe.
 
  * `std::noshowpos`
- 	Masque le signe.
+    Masque le signe.
 
 #### L'affichage en majuscule :
 
 Il est possible d'afficher/masquer l'affichage scientifique ou héxadécimal en majuscule :
 
  * `std::uppercase`
- 	Affiche en majuscule
+    Affiche en majuscule
 
  * `std::nouppercase`
- 	Affiche en minuscule
+    Affiche en minuscule
 
 ### Le sens de remplissage des espaces vides :
 ---
 Il est possible de modifier le sens de remplissage des espaces vide lors de l'affichage :
 
  * `std::right`
- 	Remplit les espaces à droite.
+    Remplit les espaces à droite.
 
  * `std::left`
- 	Remplit les espaces à gauche.
+    Remplit les espaces à gauche.
 
  * `std::internal`
- 	Remplit les espace en les insérants à l'intérieur.
+    Remplit les espace en les insérants à l'intérieur.
 
 ### L'affichage par `<iomanip>` :
 ---
@@ -209,14 +213,14 @@ Il est possible de modifier le sens de remplissage des espaces vide lors de l'af
 Il est possible de remplir des espaces vides lors de l'affichage :
 
  * `std::setw(n)`
- 	Remplit n espace vide.
+    Remplit n espace vide.
 
 #### Remplissage de caractères :
 
 Il est possible de remplir des caractères lors de l'affichage :
 
  * `std::setfill('c')`
- 	Remplit n caractère *'c'*. L'utilisation est lié a `setw()`. Exemple d'utilisation :
+    Remplit n caractère *'c'*. L'utilisation est lié a `setw()`. Exemple d'utilisation :
 
 ```c++
 // Remplit 10 '-' à l'écran suivit du nom 'Dylan'
@@ -326,13 +330,13 @@ Les suffixes sont :
  * `u`, `U` pour `unsigned`.
 
 ```c++
-usigned int data = 10u;		usigned int data = 10U;
+usigned int data = 10u;     usigned int data = 10U;
 ```
 
  * `l` ou `L` pour `long int` ou `long double`.
 
 ```c++
-long data = 7842963469l;	double data = 835265263824527L;
+long data = 7842963469l;    double data = 835265263824527L;
 ```
 
  * `ll`, `LL` pour `long long int`.
@@ -344,7 +348,7 @@ long long data = 8352675890065263824527ll;
  * `f`, `F` pour `float`.
 
  ```c++
-float data = 32.0f;		float data = 32.0F;
+float data = 32.0f;     float data = 32.0F;
  ```
  Il faut **obligatoirement indiquer la virgule concernant le float**.
 
@@ -381,24 +385,24 @@ std::cout << std::numeric_limits<int>::max() << std::endl;
 ```
 
  * `numeric_limits`
-	C'est une classe qui fournit des informations sur les propriétés des types arithmétiques. Elle possède de nombreuses méthodes.
+    C'est une classe qui fournit des informations sur les propriétés des types arithmétiques. Elle possède de nombreuses méthodes.
 
  * `max()`
-	C'est une des méthodes de la classe `numeric_limits`. Elle renvoie la valeur maximale que peut prendre le type placé en paramètre.
+    C'est une des méthodes de la classe `numeric_limits`. Elle renvoie la valeur maximale que peut prendre le type placé en paramètre.
 
 D'autres exemples de méthodes sont :
  
  * `min()`
- 	Pour connaitre le valeur minimale que peut prendre le type placé en paramètre.
+    Pour connaitre le valeur minimale que peut prendre le type placé en paramètre.
 
  * `is_signed()`
- 	Pour savoir si le type est signé.
+    Pour savoir si le type est signé.
 
  * `is_integral()`
- 	Pour savoir si le type est un intégral.
+    Pour savoir si le type est un intégral.
 
  * `is_const()`
- 	Pour savoir si le type est constant.
+    Pour savoir si le type est constant.
 
 ## Saisie utilisateur
 ---
@@ -411,9 +415,9 @@ std::cout << "Entrez un nombre : " << std::endl;
 std::cin >> n;
 std::cout << "Vous avez entré : " << n << std::endl;
 /*
-* On demande à l'utilisateur d'entrer un nombre  	> exemple : 64
-* On stock sa valeur dans la variable n 			> n = 64
-* On affiche la valeur du nombre que l'on a stocké 	> Vous avez entré : 64
+* On demande à l'utilisateur d'entrer un nombre     > exemple : 64
+* On stock sa valeur dans la variable n             > n = 64
+* On affiche la valeur du nombre que l'on a stocké  > Vous avez entré : 64
 */
 ```
 
@@ -428,9 +432,9 @@ std::cout << "Entrez un nombre : " << std::endl;
 std::cin >> n;
 std::cout << "Vous avez entré : " << n << std::endl;
 /*
-* On demande à l'utilisateur d'entrer un nombre 	> exemple : 56 78 14
-* On stock la valeur dans la variable n 			> n = 56
-* On affiche la valeur du nombre que l'on a stocké	> Vous avez entré : 56
+* On demande à l'utilisateur d'entrer un nombre     > exemple : 56 78 14
+* On stock la valeur dans la variable n             > n = 56
+* On affiche la valeur du nombre que l'on a stocké  > Vous avez entré : 56
 */
 ```
 
@@ -485,8 +489,8 @@ L'objet `cin` peut avoir plusieurs **états** qui le définissent à un instant 
 
 > Note : inutile de tester avec `fail()` si `bad()` retourne *true*.
     
-|           |      good()     |      bad()      |         fail()        |
-| :-------- | :-------------: | :-------------: |   -----------------:  |
+|  IS TRUE  |      good()     |      bad()      |         fail()        |
+| :-------- | :-------------: | :-------------: |   :----------------:  |
 | good()    |      true       |      false      |         false         |
 | bad()     |      true       |       true      |   false **OR** true   |
 | fail()    |      true       |       true      |          true         |
