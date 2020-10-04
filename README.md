@@ -40,6 +40,8 @@ Sommaire :
     1. [Les fonctions](#les-fonctions)
         - [La surcharge de fonction](#la-surcharge-de-fonciton)
         - [Les templates](#les-templates)
+        - [Les fonctions lambda](#les-fonctions-lambda)
+    1. [Les tableaux](#les-tableaux)
 ---
 
 # C++
