@@ -1,6 +1,6 @@
 *Ceci est un guide C++, qui permet de voir toutes les nouvelles fonctionnalités possibles par rapport au langage C, et ce jusqu'à la norme C++20 (2020), si possible.*
 
-*Date de création, en 2020.*
+*Date de création, 2020.*
 *Dérnière mise à jour, le 01/10/20.*
 
 ---
@@ -11,7 +11,7 @@ Sommaire :
     1. [La compilation](#la-compilation)
     1. [Les commentaires](#les-commentaires)
     1. [Les *libraries*](#les-libraries)
-    1. [L'affichage](#l%27affichage)
+    1. [L'affichage](#l'affichage)
         - [Les caractères](#les-caractères)
             - [L'affichage des char](#l'affichage-des-char)
             - [L'affichage des wchar](#l'affichage-des-wchar)
@@ -35,7 +35,11 @@ Sommaire :
         - [La library <limits>](#la-library-<limits>)
     1. [Saisie utilisateur](#saisie-utilisateur)
         - [Les méthodes de cin](#les-méthodes-de-cin)
-        - [Les états de cin](#les-états-de-cin)
+            - [Les états de cin](#les-états-de-cin)
+            - [Vidage du buffer](#le-vidage-du-buffer)
+    1. [Les fonctions](#les-fonctions)
+        - [La surcharge de fonction](#la-surcharge-de-fonciton)
+        - [Les templates](#les-templates)
 ---
 
 # C++
@@ -151,6 +155,12 @@ Il est possible de modifier sur le flux de sortie standard (`cout`) le format d'
  * `std::fixed`
     Format fixe.
 
+Voici un exemple d'utilisation :
+
+```c++
+std::cout << std::hex << 78 << std::endl;   // affiche le nombre 78 en hexadécimal
+```
+
 #### L'affichage d'un booléen :
 
 Il est possible d'afficher/masquer la valeur d'un type booléen :
@@ -258,20 +268,20 @@ int camelCase = 22;
 Il existe la déclaration et l'initialisation en 'syntaxe parenthèse' :
 
 ```c++
-int camleCase(22);
+int camelCase(22);
 ```
 
 Et enfin, il existe en C++ une nouvelle syntaxe qui n'existe pas en C, la 'syntaxe crochet' :
 
 ```c++
-int camleCase{22};
+int camelCase{22};
 ```
 
 Il est recommandé en C++ d'utiliser la **dernière syntaxe** qui est la plus moderne et la **plus optimale** pour le compilateur.
 
 ### Les constantes :
 ---
-Les constantes se déclarent et s'initialisent de la même manière qu'en langage C. A savoir commme ceci :
+Les **constantes** se déclarent et s'initialisent de la même manière qu'en langage C. A savoir commme ceci :
 
 ```c++
 // TOUJOURS EN MAJUSCULE
@@ -380,7 +390,7 @@ Il est possible de faire du *cast* sur une donnée constante et ne plus la rendr
 Il est possible de savoir la valeur maximum que l'on peut stocker dans un type. Exemple :
 
 ```c++
-// Affiche la valeur 2 147 483 64
+// Affiche la valeur 2 147 483 64 à l'écran
 std::cout << std::numeric_limits<int>::max() << std::endl;
 ```
 
@@ -416,7 +426,7 @@ std::cin >> n;
 std::cout << "Vous avez entré : " << n << std::endl;
 /*
 * On demande à l'utilisateur d'entrer un nombre     > exemple : 64
-* On stock sa valeur dans la variable n             > n = 64
+* On stock sa valeur dans la variable n         > n = 64
 * On affiche la valeur du nombre que l'on a stocké  > Vous avez entré : 64
 */
 ```
@@ -433,7 +443,7 @@ std::cin >> n;
 std::cout << "Vous avez entré : " << n << std::endl;
 /*
 * On demande à l'utilisateur d'entrer un nombre     > exemple : 56 78 14
-* On stock la valeur dans la variable n             > n = 56
+* On stock la valeur dans la variable n         > n = 56
 * On affiche la valeur du nombre que l'on a stocké  > Vous avez entré : 56
 */
 ```
@@ -457,6 +467,7 @@ Tout comme `cout`, `cin` est un objet qui possède de nombreuses méthodes. Parm
 
  * `ignore()`
     Elle qui ignore les caractères. Elle peut également prendre en paramètre le nombre de caractère à ignorer et un **"délimiteur"** qui stoppera la méthode.
+
 ```c++
 // ignore les 50 premiers caractères jusqu'à rencontrer un espace
 std::cin.ignore(50, " ");
@@ -464,6 +475,7 @@ std::cin.ignore(50, " ");
 
  * `getline(<flux>, <string>, <delimiter>)`
     Récupère une chaîne de caractère jusqu'à arriver à un `'\n'`. Elle prend en paramettre un flux (ici `std::cin`), une chaîne de caractère de type `string` dans laquelle on stockera la ligne, et éventuellement un délimiteur. Sans délimiteur la méthode s'arrête au premier `'\n'`.
+
 ```c++
 std::string name{};
 std::cout << "Entrez votre nom :" << std::endl;
@@ -477,7 +489,7 @@ std::cout << "Votre nom est " << name << std::endl
 ```
 
 #### Les états de `cin`
----
+
 L'objet `cin` peut avoir plusieurs **états** qui le définissent à un instant donné. Ces états peuvent être vérifiés par des méthodes. Ces méthodes retournent toutes un booléen. Ces méthodes sont :
 
  * `good()`
@@ -488,9 +500,164 @@ L'objet `cin` peut avoir plusieurs **états** qui le définissent à un instant 
     Retourne *true* s'il y a une erreur de flux ou que la dernière opération effectuée avec `cin` à échoué. *false* dans le cas contraire.
 
 > Note : inutile de tester avec `fail()` si `bad()` retourne *true*.
-    
-|  IS TRUE  |      good()     |      bad()      |         fail()        |
+
+| IS TRUE ->|      good()     |      bad()      |         fail()        |
 | :-------- | :-------------: | :-------------: |   :----------------:  |
 | good()    |      true       |      false      |         false         |
 | bad()     |      true       |       true      |   false **OR** true   |
 | fail()    |      true       |       true      |          true         |
+
+#### Le vidage du *buffer*
+
+Il y a une manière de procéder pour vider correctement le buffer. C'est d'utiliser les méthodes `clear` et `ignore` avec la library `<limits>` que l'on avait vu précèdement pour calculer la taille maximal que peut contenir un flux avec la méthode `streamsize`. Comme ceci :
+
+```c++
+/* ... */
+std::cin >> name;
+std::cout << "Votre nom est : " << name << std::endl;
+
+std::cin.clear();
+sstd::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');    // ignore le maximum que peut accepter un flux jusqu'à arriver à la fin
+
+std::cin >> name;
+std::cout << "Votre nom est : " << name << std::endl;
+```
+
+De cette manière, si au premier `cin` l'utilisateur entre `"Dylan HARAL"`, `name` prendra la valeur `"Dylan"`. Au deuxième `cin`, comme le buffer est vidé, l'utilisateur doit entrer une nouvelle fois une information au clavier. L'information `"HARAL"` sera donc écrasée.
+
+> Note : Attention, de ne JAMAIS vider deux fois de suite le buffer sans avoir lu une information avant ! Cela pourrai causer des erreurs.
+
+## Les fonctions
+---
+La structure des fonctions en C++ et la même que celle du langage C. Il y a aucune différence à ce niveau.
+
+On peut tout comme le langage C, effectuer un **passage par valeur** :
+
+```c++
+int add(int n) {
+    n = n + n;
+    return n;
+}
+
+/* dans le main */
+int n{2};
+n = add(n);     // n = 4
+```
+
+On peut effectuer un **passage par adresse** :
+
+```c++
+void add(int *n) {
+    *n = *n + *n;
+}
+
+/* dans le main */
+int n{2};
+add(&n);     // n = 4
+```
+Mais on peut également utiliser une nouvelle fonctionnalité en C++, qui est le **passage par référence**, noté avec le symbole `&`. Exemple :
+
+```c++
+void add(int &n) {
+    n = n + n;
+}
+
+/* dans le main */
+int n{2};
+add(n);     // n = 4
+```
+> Note : la référence n'est **PAS DU TOUT** une adresse ! Elle prend la même synthaxe qu'une adresse mais c'est tout. En réalité, une référence s'apparente un **pointeur fixe**.
+
+### La surcharge de fonction
+---
+La **surcharge de fonction** est une fonctionnalité qui existe en C++ mais qui n'existe pas en C. Elle intervient lorsque au moins deux fonctions portent le **même nom mais ont des types** (que ceux soit le type de leurs arguments ou le type de la fonction en elle-même) **différents**. Par exemple :
+
+```c++
+// multiplie deux nombres entiers
+int multipl(int a, int b) {
+    return a * b;
+}
+
+// mutiplie deux nombres flottants
+float multipl(float a, float b) {
+    return a * b;
+}
+
+/* dans le main */
+auto nb1{4.2};
+auto nb2{6.0};
+std::cout << multipl(nb1,nb2) << std::endl;     //le compilateur choisira automatiquement la fonction adéquate à appeller. Ici ce sera la fonction qui retourne un float.
+```
+
+### Les *templates*
+---
+Les ***templates*** sont une fonctionnalité du C++ très simple à comprendre et qui permet de gagner beaucoup de temps. Ce mécanisme se reposent sur la notion précèdente de **surcharge de fonction**. On déclare un *template* avec le mot-clé `template`, comme ceci :
+
+```c++
+// voici un template qui multiplie deux nombres de n'importe quel type
+template<typename T>
+T multipl(T a, T b) {
+    return a * b;
+}
+
+/* dans le main */
+auto nb1{4.2};
+auto nb2{6.0};
+std::cout << multipl(nb1,nb2) << std::endl; 
+```
+L'attribut `typename T` du `template` signifie que ce *template* fonctionne avec n'importe quel type (`int`, `float`, `double`, `long`, etc... ). Ce type sera stocké dans la variable `T`. La fonction `multipl` retourne donc la variable `T` et prend comme argument deux variables `a` et `b` de type `T`.
+
+Il est possible de forcer le type utilisé par le *template* lors de l'appel de la fonction avec des `<` `>`, comme ceci :
+
+```c++
+/* dans le main */
+auto nb1{4.2};
+auto nb2{6.0};
+std::cout << multipl<int>(nb1,nb2) << std::endl;    // la fonction retourne un entier
+```
+
+### Les fonctions lambda
+---
+Les fonctions lanbda sont une nouvelle fonctionnalité apporté le C++. Elle permet de définir une fonction anonyme utilisable à l'emplacement où elle est appelé ou passé en argument. La structure d'une fonctions lambda se divise en grosse 3 parties. La "clause de capture" symbolisé par le symbole `[]`, les paramètres symbolisés par des parenthèses `()` et enfin le corps de la fonction qui se retrouve entre les accolades `{}`. Voici la structure complète :
+
+```c++
+/* dans le main */
+// fonction lambda qui retourne la multiplication de deux nombres.
+auto sum = [](auto a, auto b) { return a * b; };
+std::cout << sum(6,7) << std::endl;     // affiche 42 (= 6 x 7)
+```
+
+Il est possible de mettre des attributs à l'intérieur de la clause de capture de la fonction lambda. Par exemple, nous pouvons passer des références vers des variables locales de cette manière :
+
+```c++
+/* dans le main */
+auto nb1{2};
+auto nb2{3};
+auto sum = [&](auto a, auto b) { return a * b * nb1 * nb2; };
+std::cout << sum(6,7) << std::endl;     // affiche 252 (= 6 x 7 x 2 x 3)
+```
+
+`[&]` indique que toutes les variables données à la fonction seront passées par référence. `nb1`et `nb2` sont donc passés par référence, tandis que `a` et `b` sont passés par valeur.
+
+> Note : il faut que les variables soit disponiblent, c'est-à-dire qu'elles doivent être dans la même instance que la fonction lambda.
+
+Pour passer des variables par valeur, il suffit de mettre un `=` dans la clause de capture, de cette manière :
+
+```c++
+/* dans le main */
+/*...*/
+auto sum = [=](auto a, auto b) { return a * b * nb1 * nb2; };
+/*...*/
+```
+Toutes les variables passées à la fonction seront passées par valeur. Ici, `nb1`et `nb2` sont passés par valeur.
+
+On peut également spécifier le passage d'une varibles précise. Par exemple, s'il ont veut passer `nb1` par valeur mais que l'on veut passer `nb2` par référence, il suffit de procéder de la manière suivante :
+
+```c++
+/* dans le main */
+/*...*/
+auto sum = [nb1, &nb2](auto a, auto b) { return a * b * nb1 * nb2; };
+/*...*/
+```
+
+## Les tableaux
