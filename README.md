@@ -12,7 +12,7 @@ Sommaire :
     1. [Les commentaires](#les-commentaires)
     1. [Les *libraries*](#les-libraries)
     1. [L'affichage](#laffichage)
-        - [Les caractères](#les-caractères)
+        - [Les caractères](#les-caractères-)
             - [L'affichage des char](#l'affichage-des-char)
             - [L'affichage des wchar](#l'affichage-des-wchar)
         - [Les nombres](#les-nombres)
