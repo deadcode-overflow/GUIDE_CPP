@@ -18,7 +18,7 @@ Sommaire :
         - [Les nombres](#les-nombres-)
             - [Les formats d'affichage des nombres](#les-formats-daffichage-des-nombres-)
             - [L'affichage d'un booléen](#laffichage-dun-booléen-)
-            - [L'affichage après la virgule d'un nombre décimal](#laffichage-après-la-virgule-dun-nombre-)
+            - [L'affichage après la virgule d'un nombre décimal](#laffiche-après-la-virgule-dun-nombre-décimal-)
             - [L'affichage du signe d'un nombre](#laffichage-du-signe-dun-nombre-)
             - [L'affichage en majuscule](#laffichage-en-majuscule-)
         - [Le sens de remplissage des espaces vides](#le-sens-de-remplissage-des-espaces-vides-)
