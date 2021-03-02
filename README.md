@@ -26,7 +26,7 @@ Sommaire :
             - [Remplissage d'espaces vides](#remplissage-despaces-vides-)
             - [Remplissage de caractères](#remplissage-de-caractères-)
             - [L'affichage d'une variable](#laffichage-dune-variable-)
-    1. [Les variables et les constantes](#les-variables-et-les-constantes-)
+    1. [Les variables et les constantes](#les-variables-et-les-constantes)
         - [La déclaration et l'initialisation](#la-déclaration-et-linitialisation-)
         - [Les constantes](#les-constantes-)
         - [Le typage dynamique](#le-typage-dynamique)
