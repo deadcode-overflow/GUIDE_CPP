@@ -29,7 +29,7 @@ Sommaire :
     1. [Les variables et les constantes](#les-variables-et-les-constantes)
         - [La déclaration et l'initialisation](#la-déclaration-et-linitialisation-)
         - [Les constantes](#les-constantes-)
-        - [Le typage dynamique](#le-typage-dynamique)
+        - [Le typage dynamique](#le-typage-dynamique-)
         - [Forcer/Renforcer le typage](#forcer/renforcer-le-typage)
         - [Les casts](#les-casts)
         - [La library \<limits\>](#la-library-limits-)
