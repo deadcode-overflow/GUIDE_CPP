@@ -32,7 +32,7 @@ Sommaire :
         - [Le typage dynamique](#le-typage-dynamique-)
         - [Forcer/Renforcer le typage](#forcerrenforcer-le-typage-)
         - [Les casts](#les-casts)
-        - [La library \<limits\>](#la-library-limits-)
+        - [La library \<limits\>](#la-library-limits)
     1. [Saisie utilisateur](#saisie-utilisateur)
         - [Les méthodes de cin](#les-méthodes-de-cin)
             - [Les états de cin](#les-états-de-cin)
