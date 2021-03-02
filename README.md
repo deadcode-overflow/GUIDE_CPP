@@ -38,7 +38,7 @@ Sommaire :
             - [Les états de cin](#les-états-de-cin)
             - [Vidage du buffer](#le-vidage-du-buffer)
     1. [Les fonctions](#les-fonctions)
-        - [La surcharge de fonction](#la-surcharge-de-fonciton)
+        - [La surcharge de fonction](#la-surcharge-de-fonction)
         - [Les templates](#les-templates)
         - [Les fonctions lambda](#les-fonctions-lambda)
     1. [Les tableaux](#les-tableaux)
