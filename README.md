@@ -664,4 +664,4 @@ auto sum = [nb1, &nb2](auto a, auto b) { return a * b * nb1 * nb2; };
 
 ## Les tableaux
 
-(⚠ en chantier 🛠) :p
+(⚠ 🛠 en chantier) 😛
