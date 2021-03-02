@@ -6,7 +6,7 @@
 ---
 Sommaire :
 ---------
-- [C++](#C++)
+- [C++](#c)
     1. [Les fichiers et les extensions](#les-fichiers-et-les-extensions)
     1. [La compilation](#la-compilation)
     1. [Les commentaires](#les-commentaires)
