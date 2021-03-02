@@ -1,7 +1,7 @@
 *Ceci est un guide C++, qui permet de voir toutes les nouvelles fonctionnalités possibles par rapport au langage C, et ce jusqu'à la norme C++20 (2020), si possible.*
 
 *Date de création, 2020.*
-*Dérnière mise à jour, le 04/10/20.*
+*Dérnière mise à jour, le 02/03/21.*
 
 ---
 Sommaire :
